@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'music/test.css' %}" />
+
+<h1>{{ album.album_title }} </h1>
+<h2>{{ album.artist }} </h2>
+
+{% if error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+{% for song in album.song_set.all %}
+    <li>{{ song.song_title }}</li>
+{% endfor %}

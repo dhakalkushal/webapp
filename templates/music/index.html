@@ -1,0 +1,18 @@
+{% load static %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'music/test.css' %}" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% if all_albums %}
+    <ul>
+        {% for album in all_albums %}
+        <li>
+            <a href="{% url "music:detail" album.id %}">{{ album.album_title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else%}
+    <h3>You do not have anything in here yet....</h3>
+{% endif %}

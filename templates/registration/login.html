@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+{% block title %}
+    Test
+{% endblock %}
+
+{% block body %}
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Login</h4>
+
+    {% if form.errors %}
+        <p>Your username and password </p>
+        <p>didn't match. Please try again.</p>
+    {% endif %}
+
+	<form method="post" class="login">
+        {% csrf_token %}
+        {% include 'users/form_template.html' %}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Login </button>
+        </div> <!-- form-group// -->
+        <p class="text-center"> <a href="{% url "register" %}">Register</a> </p>
+
+        <p class="text-center"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+    </form>
+
+</article>
+</div> <!-- card.// -->
+{% endblock %}
+
+<!--container end.//-->
