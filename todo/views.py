@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 class IndexView(LoginRequiredMixin,generic.ListView):
     template_name = 'todo/home.html'
+    
     def get_queryset(self):
         return List.objects.filter(author=self.request.user)
 
