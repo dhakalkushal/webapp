@@ -31,14 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'music.apps.MusicConfig',
-    'users.apps.UsersConfig',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pagedown',
+    'captcha',
+    'music',
+    'users',
+    'todo',
+    'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -121,10 +127,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, "music/static"),
-os.path.join(BASE_DIR, "users/static"),
+    os.path.join(BASE_DIR, "music/static"),
+    os.path.join(BASE_DIR, "users/static"),
+    os.path.join(BASE_DIR, "todo/static"),
 ]
 
 LOGIN_REDIRECT_URL = 'profile'
@@ -135,3 +144,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dhakalkushal371@gmail.com'
 EMAIL_HOST_PASSWORD = 'hushangforgetspw'
+
+

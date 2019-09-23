@@ -15,7 +15,6 @@ class UserFormView(View):
 
     def post(self,request):
         form = self.form_class(request.POST)
-
         if form.is_valid():
             user = form.save(commit=False)
             username = form.cleaned_data['username']
@@ -30,7 +29,6 @@ class UserFormView(View):
                 if user.is_active:
                     login(request, user)
                     return redirect('profile')
-
         return render(request,self.template_name, {'form':form})
 
 @login_required(login_url='/accounts/login/')

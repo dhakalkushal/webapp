@@ -1,0 +1,42 @@
+
+{% extends 'users/base.html' %}
+{% block body %}
+{% load humanize %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if object_list %}
+        <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Due Date</th>
+            </tr>
+        </thead>
+        {% for things in object_list %}
+            {% if things.completed %}
+                <tr>
+                    <td><del>{{ things.tasks }}</del></td>
+                    <td>{{ things.due_date | naturaltime }}</td>
+                    <td><a href="{% url 'update' things.id%}">Edit</a></td>
+                    <td><a href="{% url 'delete' things.id%}">Delete</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ things.tasks }}</td>
+                    <td>{{ things.due_date | naturaltime }}</td>
+                    <td><a href="{% url 'update' things.id%}">Edit</a></td>
+                    <td><a href="{% url 'delete' things.id%}">Delete</a></td>
+                </tr>
+            {% endif %}
+        {% endfor%}
+        </table>
+    {% else %}
+        <p>nothing here yet</p>
+    {% endif %}
+{% endblock %}

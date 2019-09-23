@@ -1,8 +1,4 @@
 {% extends 'users/base.html' %}
-{% block title %}
-    Test
-{% endblock %}
-
 {% block body %}
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
@@ -15,6 +11,7 @@
 
 	<form method="post" class="login">
         {% csrf_token %}
+
         {% include 'users/form_template.html' %}
 
         <div class="form-group">
@@ -25,9 +22,6 @@
         <p class="text-center"><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
     </form>
-
 </article>
 </div> <!-- card.// -->
 {% endblock %}
-
-<!--container end.//-->

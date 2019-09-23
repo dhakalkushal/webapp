@@ -1,24 +1,25 @@
-{% include 'users/base.html' %}
-
+{% extends 'users/base.html' %}
 {% block body %}
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
-	<p class="text-center">Get started with your free account</p>
-	<form method = "post">
-        {% csrf_token %}
-        {% include 'users/form_template.html' %}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary"> Create Account  </button>
-        </div> <!-- form-group// -->
-        <p >Have an account? <a href="{% url "login" %}">Log In</a> </p>
-    </form>
-</article>
+            <p class="text-center">Get started with your free account</p>
+            <form method = "post">
+                {% csrf_token %}
+                {% include 'users/form_template.html' %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"> Create Account  </button>
+                </div> <!-- form-group// -->
+                <p >Have an account? <a href="{% url "login" %}">Log In</a> </p>
+            </form>
+        </article>
+    </div>
 {% endblock %}

@@ -8,6 +8,7 @@
 {% if error_message %}
     <p>{{ error_message }}</p>
 {% endif %}
+
 {% for song in album.song_set.all %}
     <li>{{ song.song_title }}</li>
 {% endfor %}

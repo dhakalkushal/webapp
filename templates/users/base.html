@@ -4,6 +4,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+{% load static %}
+
+{% block head %}
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'music/images/favicon.ico' %}" />
+  </head>
+  {% endblock %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
@@ -21,22 +30,19 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home' %}">To-Do <span class="sr-only">(current)</span></a>
       </li>
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
     <ul class="navbar-nav mr-sm-2">
-      {% if user.is_authenticated %}
+    <li class="nav-item active">
+              <a class="nav-link" href="{% url 'todo-add' %}">Add ToDo <span class="sr-only">(current)</span></a>
+          </li>
 
+      {% if user.is_authenticated %}
           <li class="nav-item active">
               <a class="nav-link" href="{% url 'profile' %}">Profile <span class="sr-only">(current)</span></a>
           </li>
-
           <li class="nav-item active">
               <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
           </li>
@@ -50,8 +56,10 @@
           </li>
       {% endif %}
     </ul>
-
   </div>
 </nav>
-{% block body %}
-{% endblock %}
+<br/>
+<div class="container">
+    {% block body %}
+    {% endblock %}
+</div>
