@@ -1,4 +1,18 @@
 {% extends 'users/base.html' %}
-{% block body %}
-    <h1>HOME PAGE UNDER CONSTRUCTION</h1>
+{{% block body %}
+{% load humanize %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if object_list %}
+
+    {% endif %}
+
+
+
 {% endblock %}

@@ -4,22 +4,35 @@ from django.db.models.signals import pre_save
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
+class Subject(models.Model):
+    subject = models.CharField(max_length=20)
+    def __str__(self):
+        return self.subject
+
+class Level(models.Model):
+    level = models.CharField(max_length=20)
+    def __str__(self):
+        return self.level
+
 class Post(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False,auto_now_add=True)
-    slug = models.SlugField(unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
+    title       = models.CharField(max_length=100)
+    content     = models.TextField()
+    overview = models.TextField()
+    updated     = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp   = models.DateTimeField(auto_now=False,auto_now_add=True)
+    slug        = models.SlugField(unique=True, blank=False)
+    author      = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('post-index')
 
     def __str__(self):
         return self.title
 
 def create_slug(instance, new_slug = None):
-    slug = slugify(instance.title)
+    slug = slugify(instance.title+'a')
     if new_slug is not None:
         slug = new_slug
     qs = Post.objects.filter(slug=slug).order_by('-id')

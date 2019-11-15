@@ -1,65 +1,89 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
 {% load static %}
-
+{% block head_extra %} {% endblock head_extra %}
 {% block head %}
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="shortcut icon" href="{% static 'music/images/favicon.ico' %}" />
-  </head>
-  {% endblock %}
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static 'music/images/favicon.ico' %}" />
+    </head>
+{% endblock %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">TestBar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">TestBar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "post-index" %}">Post <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Subjects
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Physics</a>
+                    <a class="dropdown-item" href="#">Chemistry</a>
+                    <a class="dropdown-item" href="#">Computer</a>
+                    <a class="dropdown-item" href="#">Mathematics</a>
+                </div>
+            </li>
+        </ul>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+        <ul class="navbar-nav mr-sm-2 my-2 my-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user"></i> Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </li>
+                <form class="form-inline my-2 my-lg-0" action="{% url 'search-result' %}" method="get">
+                    <input class="form-control mr-sm-2" type="text" name = "q" placeholder="Search.." aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </ul>
+    </div>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">To-Do <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav mr-sm-2">
-    <li class="nav-item active">
-              <a class="nav-link" href="{% url 'todo-add' %}">Add ToDo <span class="sr-only">(current)</span></a>
-          </li>
-
-      {% if user.is_authenticated %}
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url 'profile' %}">Profile <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
-          </li>
-
-      {% else %}
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url 'register' %}">Register <span class="sr-only">(current)</span></a>
-          </li>
-      {% endif %}
-    </ul>
-  </div>
 </nav>
 <br/>
 <div class="container">
+<br/>
+<br/>
     {% block body %}
     {% endblock %}
 </div>
+
+{% block javascript %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".content-markdown").each(function(){
+            var content = $(this).text();
+            var markedContent = marked(content);
+            $(this).html(markedContent)});
+
+        $(".reply-btn").click(function() {
+            $(this).parent().parent().next('.replied-comments').fadeToggle()});
+
+    });
+</script>
+{% endblock javascript %}

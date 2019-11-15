@@ -23,10 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd%e*o31dun(ts#twn$0jj_@20elg@x#6nq81hmn^$6dl#k*t-8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['dhakalkushal.pythonanywhere.com']
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -42,9 +41,9 @@ INSTALLED_APPS = [
     'captcha',
     'music',
     'users',
-    'todo',
     'posts',
     'comments',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'webapp.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 TEMPLATES = [
     {

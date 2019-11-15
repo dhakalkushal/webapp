@@ -8,6 +8,6 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('captcha/', include('captcha.urls')),
-    path('todo/',include('todo.urls')),
     path('post/', include('posts.urls')),
+    path('comment/',include('comments.urls')),
 ]

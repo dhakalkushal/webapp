@@ -1,5 +1,12 @@
 {% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block body %}
+
+{% block head_extra %}
+    {{ form.media }}
+{% endblock head_extra %}
+
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Create Post</h4>
@@ -10,9 +17,10 @@
             </div>
         {% endfor %}
     {% endif %}
+
 	<form method = "post">
         {% csrf_token %}
-        {% include 'users/form_template.html' %}
+        {{ form|crispy }}
         <div class="form-group">
             <button type="submit" class="btn btn-primary"> Submit  </button>
         </div> <!-- form-group// -->

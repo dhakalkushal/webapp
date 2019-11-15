@@ -11,27 +11,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('posts', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Subject',
+            name='Comment',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=20)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Post',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
                 ('content', models.TextField()),
-                ('updated', models.DateTimeField(auto_now=True)),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('slug', models.SlugField(unique=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('subject', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='posts.Subject')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.Post')),
+                ('reply', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='replies', to='comments.Comment')),
             ],
         ),
     ]
