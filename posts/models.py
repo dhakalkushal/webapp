@@ -4,15 +4,15 @@ from django.db.models.signals import pre_save
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
-class Subject(models.Model):
-    subject = models.CharField(max_length=20)
-    def __str__(self):
-        return self.subject
-
 class Level(models.Model):
     level = models.CharField(max_length=20)
     def __str__(self):
         return self.level
+
+class Subject(models.Model):
+    subject = models.CharField(max_length=20)
+    def __str__(self):
+        return self.subject
 
 class Post(models.Model):
     title       = models.CharField(max_length=100)
@@ -25,14 +25,11 @@ class Post(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
-        return reverse('post-index')
-
     def __str__(self):
         return self.title
 
 def create_slug(instance, new_slug = None):
-    slug = slugify(instance.title+'a')
+    slug = slugify(instance.title)
     if new_slug is not None:
         slug = new_slug
     qs = Post.objects.filter(slug=slug).order_by('-id')

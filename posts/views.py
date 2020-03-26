@@ -1,13 +1,14 @@
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.shortcuts import redirect, render_to_response, get_object_or_404, render
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post , Level, Subject
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ListForms
 from comments.forms import CommentForm
 from comments.models import Comment
 from django.db.models import Q
+from django.urls import reverse
 
 class PostIndex(generic.ListView):
     template_name = 'posts/post_index.html'
@@ -15,6 +16,12 @@ class PostIndex(generic.ListView):
 
     def get_queryset(self):
         return Post.objects.all()
+
+class TestIndex(generic.ListView):
+    template_name = 'posts/post_index.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(subject__subject__contains=self.kwargs['subject'])
 
 class SearchResultView(generic.ListView):
     template_name = 'posts/post_index.html'
@@ -43,7 +50,7 @@ class PostDetail(generic.DetailView,CreateView):
         return reverse("index")
 '''
 
-def view_post(request, slug):
+def view_post(request,slug):
     post = get_object_or_404(Post, slug=slug)
     form = CommentForm(request.POST or None)
     comments = Comment.objects.filter(post=post,reply = None)
@@ -79,6 +86,9 @@ class PostCreate(LoginRequiredMixin,UserPassesTestMixin ,CreateView ):
             return True
         return False
 
+    def get_success_url(self):
+        return reverse('post-index')
+
 class PostUpdate(LoginRequiredMixin,UserPassesTestMixin ,UpdateView):
     model = Post
     form_class = ListForms
@@ -92,3 +102,8 @@ class PostUpdate(LoginRequiredMixin,UserPassesTestMixin ,UpdateView):
         if self.request.user== user.author:
             return True
         return False
+
+    def get_success_url(self):
+        content = self.get_object()
+        slug = content.slug
+        return reverse('detail-post',kwargs={'slug':slug})

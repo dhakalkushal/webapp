@@ -1,0 +1,48 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load ratings %}
+{% load static %}
+{{% block body %}
+{% load humanize %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="card bg-dark text-white">
+        <img src="{{ data.image }}" class="card-img">
+    </div>
+    <br/>
+
+
+    <div class="row" >
+            <div class="col">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Confirmed</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.confirmed }}</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col">
+            <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Recovered</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.recovered }}</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col">
+            <div class="card text-white bg-danger mb-3">
+                    <div class="card-header">Deaths</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ data.deaths }}</h5>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

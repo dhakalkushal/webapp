@@ -9,3 +9,4 @@ urlpatterns = [
     path('<slug:slug>/', views.view_post, name ='detail-post'),
     path('<slug:slug>/edit/',views.PostUpdate.as_view(),name = 'update-post'),
 ]
+

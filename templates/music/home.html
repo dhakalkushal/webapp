@@ -1,4 +1,8 @@
 {% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load ratings %}
+{% load static %}
 {{% block body %}
 {% load humanize %}
     {% if messages %}
@@ -9,10 +13,92 @@
         {% endfor %}
     {% endif %}
 
-    {% if object_list %}
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <img class="rounded-top border-left" src="{{ movie_data.Poster }}" width="300" height="400">
+            <h3>{{ movie_data.Title}}</h3>
+            {% ratings obj.first %}
+            <p>Genre: {{ movie_data.Genre }}</p>
+            <p>Released: {{ movie_data.Released }}</p>
+            <p>Director: {{ movie_data.Director }}</p>
+            <p>Plot: {{ movie_data.Plot }}</p>
+            <p>Actor: {{ movie_data.Actor }}</p>
+        </div>
+        <div class="col">
+            {% if user.is_authenticated %}
+                            <form method = "post">
+                                <div class="md-form">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                {% else %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Ask a Question!!
+                    </button>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Oops</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    You need to login to perform this action
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url "login" %}">Log In</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            <hr/>
+            {% for comment in comments %}
+                <div class="media mb-4">
+                    <div class="media-body"><h11 class="mt-0">{{ comment.author }} <span><small>{{ comment.timestamp |naturaltime}}</small></span></h11>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'comment-delete' comment.id%}" >Delete</a>
+                            <a href="{% url 'comment-update' comment.id%}" >Edit</a>
+                        {% endif %}
+                        <br/>
+                        {{ comment.content }}
+                    </div>
+                    <button type="button" name = "button" class="reply-btn btn btn-outline-dark btn-sm ml-2">Reply</button>
+                </div>
 
-    {% endif %}
-
-
-
+                <div class="replied-comments container mt-4" style="display: none;">
+                    {% for reply in comment.replies.all %}
+                        <div class="media mb-4">
+                            <div class="media-body">
+                                <h10 class="mt-0">{{ reply.author }} <span><small>{{ comment.timestamp |naturaltime}}</small></span></h10>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'comment-delete' reply.id%}" >Delete</a>
+                                    <a href="{% url 'comment-update' reply.id%}" >Edit</a>
+                                {% endif %}
+                                <br/>
+                                {{ reply.content}}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name = "comment_id" value="{{ comment.id }}">
+                            {{ form|crispy}}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No comments here yet :(</p>
+                <hr/>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
+

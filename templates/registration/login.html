@@ -1,23 +1,29 @@
 {% extends 'users/base.html' %}
 {% load crispy_forms_tags %}
 {% block body %}
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Login</h4>
+    <div class="container">
+        <div class="container">
+                <article class="card-body mx-auto" style="max-width: 400px;">
+                    <div class="container text-center">
+                        <img class="img-fluid" style="width: 100px" src = "https://i.postimg.cc/3J68HmxW/mydocz-recovery-code.png">
+                    </div>
+                    <h4 class="card-title mt-3 text-center">Log in to IsKush</h4>
 
-	<form method="post" class="login">
-        {% csrf_token %}
+                    <form method="post" class="login">
+                        {% csrf_token %}
+                        {{ form|crispy }}
 
-        {{ form|crispy }}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                        </div> <!-- form-group// -->
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Login </button>
-        </div> <!-- form-group// -->
-        <p class="text-center"> <a href="{% url "register" %}">Register</a> </p>
+                        <p class="text-center">I forgot <a href="{% url 'password_reset' %}">my password</a></p>
 
-        <p class="text-center"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                        <p class="text-center"> Don't have a IsKush Account? <a href="{% url "register" %}">Sign up</a> </p>
 
-    </form>
-</article>
-</div> <!-- card.// -->
+                    </form>
+                </article>
+             <!-- card.// -->
+        </div>
+    </div>
 {% endblock %}
