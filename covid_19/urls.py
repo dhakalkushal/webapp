@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home, name='post-index'),
+    path('', views.home, name='covid_19'),
 ]
