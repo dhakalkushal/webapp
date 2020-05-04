@@ -1,0 +1,216 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load ratings %}
+{% load static %}
+{{% block body %}
+{% load humanize %}
+
+    <style>
+        .zc-body {
+            background: #fff;
+        }
+        .chart--container {
+            height: 100%;
+            width: 100%;
+            min-height: 530px;
+        }
+        .zc-ref {
+            display: none;
+        }
+    </style>
+    <div class="text-center">
+        <h1>Total Cases: China vs Rest of The World</h1>
+    </div>
+
+    <body class="zc-body">
+    <div id="myChart" class="chart--container">
+        <a href="https://www.zingchart.com/" rel="noopener" class="zc-ref">Powered by ZingChart</a>
+    </div>
+
+    <div class="text-center">
+        <h1>Deaths: China vs Rest of The World</h1>
+    </div>
+
+    <div id="anotherCart" class="chart--container">
+        <a href="https://www.zingchart.com/" rel="noopener" class="zc-ref">Powered by ZingChart</a>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+
+        var dataURL = 'https://covid19.mathdro.id/api/daily';
+
+        var state = {
+            'items': [],
+            'values': [],
+            'values2': [],
+            'date_value': [],
+            'values3':[],
+            'values4': [],
+            'values5':[]
+        };
+
+        $.ajax({
+            method : 'GET',
+            url : dataURL,
+            success:function (response) {
+                console.log('RESPONSE:',response);
+                for (var i in response){
+
+                    var key = Object.keys(response[i])[13];
+
+                    var value = Object.values(response[i])[1];
+
+                    var value2 = Object.values(response[i])[2];
+
+                    var value3 = Object.values(response[i])[13];
+
+                    var value4 = Object.values(response[i])[7];
+
+                    state.items.push(key);
+                    state.values.push(value);
+                    state.values2.push(value2);
+                    state.date_value.push(value3);
+                    state.values3.push(value4)
+                }
+                for (var a in state.values3){
+
+                    var value5 = Object.values(state.values3[a])[1];
+
+                    var value6 = Object.values(state.values3[a])[2];
+
+                    state.values4.push(value5);
+
+                    state.values5.push(value6)
+                }
+                console.log('STATE:', state);
+                buildChart();
+                anotherCart()
+            }
+        });
+
+        function buildChart() {
+            ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+        // DEFINE CHART LOCATIONS (IDS)
+        // -----------------------------
+        // Main chart render location
+        var chartId = 'myChart';
+
+        // CHART CONFIG
+        // -----------------------------
+        var myConfig = {
+          "graphset": [{
+            "globals": {
+              "font-family": "Lato"
+            },
+            "type": "vbar",
+            "plotarea": {
+              "margin": "dynamic"
+            },
+            "scaleX": {
+              "values": state.date_value,
+              "item": {
+                "offsetY": -5,
+                "angle": 270
+              },
+              "tick": {
+                "size": 10
+              }
+            },
+            "plot": {
+              "bars-space-left": 0.15,
+              "bars-space-right": 0.15
+            },
+            "tooltip": {
+              "visible": false
+            },
+            "crosshair-x": {
+              "line-width": "100%",
+              "alpha": 0.4
+            },
+            "series": [{
+              "values": state.values,
+              "text": "mainlandChina"
+            }, {
+              "values": state.values2,
+              "text": "otherLocations"
+            }]
+          }]
+        };
+
+
+        // RENDER CHART
+        // -----------------------------
+        zingchart.render({
+          id: chartId,
+          data: myConfig,
+          height: 560,
+          width: '100%'
+        });
+        }
+
+        function anotherCart() {
+            ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+        // DEFINE CHART LOCATIONS (IDS)
+        // -----------------------------
+        // Main chart render location
+        var chartId = 'anotherCart';
+
+        // CHART CONFIG
+        // -----------------------------
+        var myConfig = {
+          "graphset": [{
+            "globals": {
+              "font-family": "Lato"
+            },
+            "type": "vbar",
+            "plotarea": {
+              "margin": "dynamic"
+            },
+            "scaleX": {
+              "values": state.date_value,
+              "item": {
+                "offsetY": -5,
+                "angle": 270
+              },
+              "tick": {
+                "size": 10
+              }
+            },
+            "plot": {
+              "bars-space-left": 0.15,
+              "bars-space-right": 0.15
+            },
+            "tooltip": {
+              "visible": false
+            },
+            "crosshair-x": {
+              "line-width": "100%",
+              "alpha": 0.4
+            },
+            "series": [{
+              "values": state.values4,
+              "text": "mainlandChina"
+            }, {
+              "values": state.values5,
+              "text": "otherLocations"
+            }]
+          }]
+        };
+
+
+        // RENDER CHART
+        // -----------------------------
+        zingchart.render({
+          id: chartId,
+          data: myConfig,
+          height: 560,
+          width: '100%'
+        });
+        }
+      </script>
+    </body>
+    
+{% endblock %}

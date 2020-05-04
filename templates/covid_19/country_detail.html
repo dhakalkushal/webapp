@@ -1,0 +1,35 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load ratings %}
+{% load static %}
+
+{{% block body %}
+{% load humanize %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="text-center">
+        <img src="{{ data.flag }}" class="rounded" >
+    </div>
+    <br/>
+
+    <h1 class="text-center">{{ data.country }}</h1><br/>
+
+    <h2 class="text-center">Coronavirus Cases:</h2>
+
+    <h2 class="text-center text-secondary">{{ data.cases }}</h2><br/>
+
+    <h2 class="text-center">Deaths:</h2>
+
+    <h2 class="text-center text-danger">{{ data.deaths }}</h2><br/>
+
+    <h2 class="text-center">Recovered:</h2>
+
+    <h2 class="text-center text-success">{{ data.recovered }}</h2><br/>
+{% endblock %}

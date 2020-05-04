@@ -20,6 +20,12 @@
     <orderEntry type="library" name="popper" level="application" />
     <orderEntry type="library" name="marked" level="application" />
     <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
+    <orderEntry type="library" name="zingchart" level="application" />
+    <orderEntry type="library" name="tablesort" level="application" />
+    <orderEntry type="library" name="tablesort.date" level="application" />
+    <orderEntry type="library" name="tablesort.dotsep" level="application" />
+    <orderEntry type="library" name="tablesort.filesize" level="application" />
+    <orderEntry type="library" name="tablesort.number" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'covid_19',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,6 +143,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "music/static"),
     os.path.join(BASE_DIR, "users/static"),
+    os.path.join(BASE_DIR, "covid_19/static"),
 ]
 
 LOGIN_REDIRECT_URL = 'profile'
