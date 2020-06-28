@@ -4,29 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/templates/covid_19/home.html" line="89" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5098e4-c924-42b3-a8c4-9e7af3a84005" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/compare.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/country_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/jquery.tablesorter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/jquery.tablesorter.widgets.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.date.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.dotsep.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.filesize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/tablesort.number.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/covid_19/yesterday.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webapp.iml" afterPath="$PROJECT_DIR$/.idea/webapp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/covid_19/urls.py" afterPath="$PROJECT_DIR$/covid_19/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/covid_19/views.py" afterPath="$PROJECT_DIR$/covid_19/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/covid_19/home.html" afterPath="$PROJECT_DIR$/templates/covid_19/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/users/base.html" afterPath="$PROJECT_DIR$/templates/users/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/urls.py" afterPath="$PROJECT_DIR$/users/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/settings.py" afterPath="$PROJECT_DIR$/webapp/settings.py" />
-    </list>
+    <list default="true" id="8f5098e4-c924-42b3-a8c4-9e7af3a84005" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +56,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/covid_19/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
+            <state relative-caret-position="3288">
               <caret line="138" column="21" lean-forward="false" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
               <folding />
             </state>
@@ -98,7 +76,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/posts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1593">
+            <state relative-caret-position="849">
               <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding />
             </state>
@@ -242,7 +220,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -286,6 +263,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -581,13 +559,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3402854" sideWeight="0.34166667" order="7" side_tool="true" content_ui="tabs" x="872" y="515" width="166" height="50" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29864725" sideWeight="0.65833336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29864725" sideWeight="0.65833336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39854318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39854318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -945,7 +923,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/covid_19/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
+        <state relative-caret-position="3288">
           <caret line="138" column="21" lean-forward="false" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
           <folding />
         </state>
@@ -953,7 +931,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/posts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1593">
+        <state relative-caret-position="849">
           <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
         </state>
